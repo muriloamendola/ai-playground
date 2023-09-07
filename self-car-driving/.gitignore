@@ -1,0 +1,48 @@
+# Compiled Python files
+__pycache__/
+
+# Logs
+*.log
+
+# Kivy cache and configuration
+.kivy/
+
+# Virtual environment
+venv/
+
+# Build directories
+build/
+bin/
+
+# Generated files
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+
+# macOS files
+.DS_Store
+
+# Byte-compiled files
+*.pyc
+__pycache__/
+
+# IDE-specific files and directories (you can add more as needed)
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Python-specific files
+*.pyc
+
+# Dependency management files (e.g., for pipenv or poetry)
+Pipfile.lock
+poetry.lock
+
+# Environment variables file (if you use one)
+.env
+
+# Ignore any local configuration files you might have
+config.ini  # Replace with the actual file name if needed

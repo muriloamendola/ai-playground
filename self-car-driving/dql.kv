@@ -1,0 +1,61 @@
+#:kivy 1.0.9
+# ref: https://kivy.org/docs/tutorials/pong.html
+
+<Car>:
+    size: 30, 16
+    canvas:
+        PushMatrix
+        Rotate:
+            angle: self.angle
+            origin: self.center
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: 'car.png'
+        PopMatrix
+
+<LeftSensor>:
+    size: 10,10
+    canvas:
+        Color:
+            rgba: 1,0,0,1
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<FrontSensor>:
+    size: 10,10
+    canvas:
+        Color:
+            rgba: 0,1,1,1
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<RightSensor>:
+    size: 10,10
+    canvas:
+        Color:
+            rgba: 1,1,0,1
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+<MainScreen>:
+    car: main_screen_car
+    left_sensor: main_screen_left_sensor
+    front_sensor: main_screen_front_sensor
+    right_sensor: main_screen_right_sensor
+
+    Car:
+        id: main_screen_car
+        center: self.parent.center
+    LeftSensor:
+        id: main_screen_left_sensor
+        center: self.parent.center
+    FrontSensor:
+        id: main_screen_front_sensor
+        center: self.parent.center
+    RightSensor:
+        id: main_screen_right_sensor
+        center: self.parent.center
