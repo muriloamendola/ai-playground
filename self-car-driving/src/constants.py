@@ -1,5 +1,9 @@
 from enum import Enum
 from kivy.vector import Vector
+from collections import namedtuple
+
+
+Position = namedtuple('Position', ['x', 'y'])
 
 # Car constants
 CAR_NORMAL_VELOCITY = Vector(6,0)
@@ -16,6 +20,10 @@ class Actions(Enum):
   RIGHT = 2
 
 ACTIONS_ROTATION = [0, CAR_WIDTH, -CAR_WIDTH]
+
+DISTANCE_TO_REACH_GOAL = 100
+
+EDGE_SIZE = 10
 
 # AI contants
 LIVING_PENALTY = 0.9
