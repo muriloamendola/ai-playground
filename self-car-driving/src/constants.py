@@ -19,8 +19,16 @@ ACTIONS_ROTATION = [0, CAR_WIDTH, -CAR_WIDTH]
 
 # AI contants
 LIVING_PENALTY = 0.9
+LEARNING_RATE = 0.001
 INPUT_SIZE = 5 # refers to 3 sensors + 2 orientations (positive and negative)
 
 WORST_REWARD = -1
 BAD_REWARD = -0.2
 GOOD_REWARD = 0.1
+
+QTY_NEURONS = 30
+
+REPLAY_MEMORY_SIZE = 100000
+MIN_MEMORY_SIZE_TO_START_LEARN = 100
+
+TEMPERATURE = 100 # To scale precision. The higher temperature the higher precision

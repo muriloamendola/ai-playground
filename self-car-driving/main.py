@@ -1,26 +1,26 @@
 import numpy as np
 from kivy.app import App
 from kivy.uix.widget import Widget
-from kivy.properties import NumericProperty, ReferenceListProperty
+from kivy.properties import NumericProperty
 from kivy.clock import Clock
 from kivy.vector import Vector
 from collections import namedtuple
 
-from ai import Dqn
+from src.ai.dqn import Dqn
 
-from constants import INPUT_SIZE
-from constants import LIVING_PENALTY
-from constants import Actions
-from constants import ACTIONS_ROTATION
-from constants import DISTANCE_BETWEEN_CAR_SENSOR
-from constants import CAR_WIDTH
-from constants import SENSOR_WIDTH
-from constants import CAR_ROTATION_BASE
-from constants import CAR_NORMAL_VELOCITY
-from constants import CAR_LOW_VELOCITY
-from constants import WORST_REWARD
-from constants import BAD_REWARD
-from constants import GOOD_REWARD
+from src.constants import INPUT_SIZE
+from src.constants import LIVING_PENALTY
+from src.constants import Actions
+from src.constants import ACTIONS_ROTATION
+from src.constants import DISTANCE_BETWEEN_CAR_SENSOR
+from src.constants import CAR_WIDTH
+from src.constants import SENSOR_WIDTH
+from src.constants import CAR_ROTATION_BASE
+from src.constants import CAR_NORMAL_VELOCITY
+from src.constants import CAR_LOW_VELOCITY
+from src.constants import WORST_REWARD
+from src.constants import BAD_REWARD
+from src.constants import GOOD_REWARD
 
 
 Position = namedtuple('Position', ['x', 'y'])
@@ -123,7 +123,7 @@ class MainScreen(Widget):
   largeur: int = 0
   goal: Position # destination point
   sand = []
-  cars_driver = Dqn(input_size=INPUT_SIZE, nb_action=len(Actions), gamma=LIVING_PENALTY)
+  cars_driver = Dqn(input_size=INPUT_SIZE, output_size=len(Actions), gamma=LIVING_PENALTY)
   
   def on_size(self, instance, value):
     """
@@ -196,7 +196,7 @@ class MainScreen(Widget):
         
     last_signal = [self.car.front_sensor.signal, self.car.left_sensor.signal, self.car.right_sensor.signal, orientation, -orientation]
     action = self.cars_driver.update(self.last_reward, last_signal)
-    rotation = ACTIONS_ROTATION[int(action.item())] 
+    rotation = ACTIONS_ROTATION[action] 
     self.car.move(rotation, self.sand)
 
     distance = self._get_distance_between_car_and_goal()
