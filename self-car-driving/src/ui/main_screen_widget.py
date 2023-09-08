@@ -19,6 +19,7 @@ from src.constants import BAD_REWARD
 from src.constants import GOOD_REWARD
 from src.constants import DISTANCE_TO_REACH_GOAL
 from src.constants import EDGE_SIZE
+from src.constants import SENSOR_WIDTH
 
 
 class MainScreen(Widget):
@@ -108,6 +109,15 @@ class MainScreen(Widget):
       on_edge = True
 
     return on_edge
+  
+  def set_sand_density(self, x:int, y:int, line: bool = False) -> None:
+    x = int(x)
+    y = int(y)
+    
+    if line:
+      self.sand[x-SENSOR_WIDTH:x+SENSOR_WIDTH, y-SENSOR_WIDTH:y+SENSOR_WIDTH] = 1
+    else:
+      self.sand[x, y] = 1
       
   def update(self, dt):    
     orientation = self._get_cars_orientation()
