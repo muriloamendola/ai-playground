@@ -43,7 +43,7 @@ class MainScreen(Widget):
     """
     self.longueur = self.width
     self.largeur = self.height
-    self.sand = np.zeros((self.longueur,self.largeur)) # initializing the sand array with only zeros    
+    self.clear_sand_density()    
     self.goal = Position(x=CAR_WIDTH, y=self.largeur - CAR_WIDTH)
 
     self.car = self.ids.car
@@ -118,7 +118,10 @@ class MainScreen(Widget):
       self.sand[x-SENSOR_WIDTH:x+SENSOR_WIDTH, y-SENSOR_WIDTH:y+SENSOR_WIDTH] = 1
     else:
       self.sand[x, y] = 1
-      
+
+  def clear_sand_density(self):
+    self.sand = np.zeros((self.longueur,self.largeur)) # initializing the sand array with only zeros (no density)
+
   def update(self, dt):    
     orientation = self._get_cars_orientation()
         
